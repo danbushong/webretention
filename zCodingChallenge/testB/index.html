@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+
+
+  <!-- Add the OuiBounce CSS & Font -->
+  <link rel="stylesheet" href="ouibounce.min.css">
+  
+  <link href='https://fonts.google.com/specimen/Lato#about'>
+  <!-- Add OuiBounce JS -->
+  <script src="./ouibounce.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="flipclock.css">
+  <title>Dan Bushong Code Chanllenge</title>
+
+  
+
+</head>
+
+<body>
+  <!-- Example page instructions -->
+  <h1>Dan Bushong's Coding Challenge!</h1>
+
+  <!-- OuiBounce Modal -->
+  <div id="ouibounce-modal">
+    <div class="underlay"></div>
+    <div class="modal">
+
+
+      <div class="modal-body">
+        <h2 class="modal-content"></h2>
+        <h1>Claim your instant discount before the timer runs out!</h1>
+        <div class="clock"></div>
+
+
+      </div>
+
+      <div class="modal-footer">
+        <button class="claimDiscountButton">CLAIM DISCOUNT</button>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- Load jQuery -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <!-- Load Clock -->
+  <script src="flipclock.js"></script>
+  <!-- Used to fire the modal -->
+  <script>
+
+    // if you want to use the 'fire' or 'disable' fn,
+    // you need to save OuiBounce to an object
+    var _ouibounce = ouibounce(document.getElementById('ouibounce-modal'), {
+      aggressive: true,
+      timer: 0,
+      callback: function () { console.log('ouibounce fired!'); }
+    });
+
+
+    $('body').on('click', function () {
+      $('#ouibounce-modal').hide();
+    });
+
+    $('#ouibounce-modal .modal-footer').on('click', function () {
+      $('#ouibounce-modal').hide();
+    });
+
+
+    $('#ouibounce-modal .modal').on('click', function (e) {
+      e.stopPropagation();
+    });
+
+    $.get("http://ip-api.com/json/", function (data) {
+      console.log(data.city)
+      $('.modal-content').text(`WAIT! SPECIAL OFFER FOR ${data.city} RESIDENTS...`)
+    });
+
+    var clock = $('.clock').FlipClock(3600, {
+      countdown: true,
+      
+    });
+
+  </script>
+</body>
+
+</html>
