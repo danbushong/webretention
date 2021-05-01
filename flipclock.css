@@ -179,14 +179,13 @@
   z-index: 5; }
 
 .flip-clock-divider {
-  
+  float: left;
   display: inline-block;
   position: relative;
   width: 20px;
   height: 100px; }
 
 .flip-clock-divider:first-child {
-  float: left;
   width: 0; }
 
 .flip-clock-dot {
