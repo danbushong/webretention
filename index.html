@@ -73,7 +73,7 @@
       e.stopPropagation();
     });
 
-    $.get("http://ip-api.com/json/", function (data) {
+    $.get("https://ip-api.com/json/", function (data) {
       console.log(data.city)
       $('.modal-content').text(`WAIT! SPECIAL OFFER FOR ${data.city} RESIDENTS...`)
     });
