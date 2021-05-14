@@ -1,4 +1,4 @@
-# webretention
+# Web Retention
 ## Use
 Web retention app made to incentivize users when they attempt to exit website.
 
